@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { PrismaService } from './prisma.service';
 import { getAppConfig } from './config/app.config';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
+import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,6 +17,7 @@ async function bootstrap() {
   console.log(`🔍 Test query result:`, result);
 
   app.useGlobalFilters(new AllExceptionsFilter());
+  app.useGlobalInterceptors(new TransformInterceptor());
 
   await app.listen(port);
 
