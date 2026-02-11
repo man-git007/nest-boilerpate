@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { PrismaService } from './prisma.service';
 import { getAppConfig } from './config/app.config';
+import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +14,8 @@ async function bootstrap() {
   console.log('✅ Database connected successfully!');
   const result = await prisma.$queryRaw`SELECT 1 as test`;
   console.log(`🔍 Test query result:`, result);
+
+  app.useGlobalFilters(new AllExceptionsFilter());
 
   await app.listen(port);
 
