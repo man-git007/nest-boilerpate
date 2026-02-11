@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AppService } from './app.service';
+import { AuthGuard } from './common/guards/auth.guard';
 
 @Controller()
 export class AppController {
@@ -18,5 +19,20 @@ export class AppController {
   @ApiResponse({ status: 200, description: 'Service is healthy' })
   getHealth(): object {
     return this.appService.getHealthStatus();
+  }
+
+  @Get('protected')
+  @UseGuards(AuthGuard)
+  @ApiOperation({ summary: 'Protected route example' })
+  @ApiResponse({
+    status: 200,
+    description: 'Access granted to protected route',
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  getProtected(): object {
+    return {
+      message: 'You have access to this protected route!',
+      timestamp: new Date().toISOString(),
+    };
   }
 }
