@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
-import { ValidationMiddleware } from './common/middleware/validation.middleware';
+import { IndexMiddleware } from './common/middleware/index.middleware';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { ValidationMiddleware } from './common/middleware/validation.middleware'
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // Apply AuthMiddleware to all routes except public ones
-    consumer.apply(ValidationMiddleware).exclude('', '/health').forRoutes('*');
+    // Apply IndexMiddleware to all routes except public ones
+    consumer.apply(IndexMiddleware).exclude('', '/health').forRoutes('*');
   }
 }

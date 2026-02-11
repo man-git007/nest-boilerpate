@@ -3,15 +3,14 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 
 @Injectable()
-export class ValidationMiddleware implements NestMiddleware {
+export class IndexMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    // Clean and validate request data
-    this.sanitizeReqData(req);
+    this.defaultMiddleware(req);
 
     next();
   }
 
-  private sanitizeReqData(req: Request): void {
+  private defaultMiddleware(req: Request): void {
     console.log(req.query);
   }
 }
