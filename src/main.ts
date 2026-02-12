@@ -21,7 +21,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalPipes(new ValidationPipe());
-
+  app.setGlobalPrefix('api');
   // ✅ CALL SWAGGER SETUP HERE - NO AWAIT
   setupSwagger(app); // ✅ Removed await
 
