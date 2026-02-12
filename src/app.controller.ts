@@ -2,10 +2,14 @@ import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AuthGuard } from './common/guards/auth.guard';
+import { UserService } from './modules/user/user.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly userService: UserService,
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Get welcome message' })

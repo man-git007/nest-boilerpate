@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { PrismaService } from './prisma.service';
+import { PrismaService } from './modules/prisma/prisma.service';
 import { getAppConfig } from './config/app.config';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
-import { ValidationPipe } from './common/pipes/validation.pipe';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

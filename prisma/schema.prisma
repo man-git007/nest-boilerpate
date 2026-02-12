@@ -6,7 +6,7 @@
 
 generator client {
   provider        = "prisma-client"
-  output          = "../src/database/generated/prisma"
+  output          = "../src/generated/prisma"
   moduleFormat    = "cjs"
 
 }
@@ -19,14 +19,8 @@ model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
   name  String?
-  posts Post[]
-}
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
-model Post {
-  id        Int      @default(autoincrement()) @id
-  title     String
-  content   String?
-  published Boolean? @default(false)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  @@map("users") 
 }

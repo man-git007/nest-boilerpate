@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-export const getDatabaseConfig = () => {
+export const dbConfig = () => {
   const isProduction = process.env.NODE_ENV === 'production';
 
   return {

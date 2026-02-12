@@ -38,18 +38,24 @@ export type UserMinAggregateOutputType = {
   id: number | null;
   email: string | null;
   name: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
 };
 
 export type UserMaxAggregateOutputType = {
   id: number | null;
   email: string | null;
   name: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
 };
 
 export type UserCountAggregateOutputType = {
   id: number;
   email: number;
   name: number;
+  created_at: number;
+  updated_at: number;
   _all: number;
 };
 
@@ -65,18 +71,24 @@ export type UserMinAggregateInputType = {
   id?: true;
   email?: true;
   name?: true;
+  created_at?: true;
+  updated_at?: true;
 };
 
 export type UserMaxAggregateInputType = {
   id?: true;
   email?: true;
   name?: true;
+  created_at?: true;
+  updated_at?: true;
 };
 
 export type UserCountAggregateInputType = {
   id?: true;
   email?: true;
   name?: true;
+  created_at?: true;
+  updated_at?: true;
   _all?: true;
 };
 
@@ -177,6 +189,8 @@ export type UserGroupByOutputType = {
   id: number;
   email: string;
   name: string | null;
+  created_at: Date;
+  updated_at: Date;
   _count: UserCountAggregateOutputType | null;
   _avg: UserAvgAggregateOutputType | null;
   _sum: UserSumAggregateOutputType | null;
@@ -203,14 +217,16 @@ export type UserWhereInput = {
   id?: Prisma.IntFilter<'User'> | number;
   email?: Prisma.StringFilter<'User'> | string;
   name?: Prisma.StringNullableFilter<'User'> | string | null;
-  posts?: Prisma.PostListRelationFilter;
+  created_at?: Prisma.DateTimeFilter<'User'> | Date | string;
+  updated_at?: Prisma.DateTimeFilter<'User'> | Date | string;
 };
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   name?: Prisma.SortOrderInput | Prisma.SortOrder;
-  posts?: Prisma.PostOrderByRelationAggregateInput;
+  created_at?: Prisma.SortOrder;
+  updated_at?: Prisma.SortOrder;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -221,7 +237,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     OR?: Prisma.UserWhereInput[];
     NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
     name?: Prisma.StringNullableFilter<'User'> | string | null;
-    posts?: Prisma.PostListRelationFilter;
+    created_at?: Prisma.DateTimeFilter<'User'> | Date | string;
+    updated_at?: Prisma.DateTimeFilter<'User'> | Date | string;
   },
   'id' | 'email'
 >;
@@ -230,6 +247,8 @@ export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   name?: Prisma.SortOrderInput | Prisma.SortOrder;
+  created_at?: Prisma.SortOrder;
+  updated_at?: Prisma.SortOrder;
   _count?: Prisma.UserCountOrderByAggregateInput;
   _avg?: Prisma.UserAvgOrderByAggregateInput;
   _max?: Prisma.UserMaxOrderByAggregateInput;
@@ -248,55 +267,69 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<'User'> | number;
   email?: Prisma.StringWithAggregatesFilter<'User'> | string;
   name?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  created_at?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
+  updated_at?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
 };
 
 export type UserCreateInput = {
   email: string;
   name?: string | null;
-  posts?: Prisma.PostCreateNestedManyWithoutAuthorInput;
+  created_at?: Date | string;
+  updated_at?: Date | string;
 };
 
 export type UserUncheckedCreateInput = {
   id?: number;
   email: string;
   name?: string | null;
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutAuthorInput;
+  created_at?: Date | string;
+  updated_at?: Date | string;
 };
 
 export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  posts?: Prisma.PostUpdateManyWithoutAuthorNestedInput;
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  posts?: Prisma.PostUncheckedUpdateManyWithoutAuthorNestedInput;
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type UserCreateManyInput = {
   id?: number;
   email: string;
   name?: string | null;
+  created_at?: Date | string;
+  updated_at?: Date | string;
 };
 
 export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   name?: Prisma.SortOrder;
+  created_at?: Prisma.SortOrder;
+  updated_at?: Prisma.SortOrder;
 };
 
 export type UserAvgOrderByAggregateInput = {
@@ -307,21 +340,20 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   name?: Prisma.SortOrder;
+  created_at?: Prisma.SortOrder;
+  updated_at?: Prisma.SortOrder;
 };
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   name?: Prisma.SortOrder;
+  created_at?: Prisma.SortOrder;
+  updated_at?: Prisma.SortOrder;
 };
 
 export type UserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-};
-
-export type UserNullableScalarRelationFilter = {
-  is?: Prisma.UserWhereInput | null;
-  isNot?: Prisma.UserWhereInput | null;
 };
 
 export type StringFieldUpdateOperationsInput = {
@@ -332,128 +364,16 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null;
 };
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string;
+};
+
 export type IntFieldUpdateOperationsInput = {
   set?: number;
   increment?: number;
   decrement?: number;
   multiply?: number;
   divide?: number;
-};
-
-export type UserCreateNestedOneWithoutPostsInput = {
-  create?: Prisma.XOR<
-    Prisma.UserCreateWithoutPostsInput,
-    Prisma.UserUncheckedCreateWithoutPostsInput
-  >;
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput;
-  connect?: Prisma.UserWhereUniqueInput;
-};
-
-export type UserUpdateOneWithoutPostsNestedInput = {
-  create?: Prisma.XOR<
-    Prisma.UserCreateWithoutPostsInput,
-    Prisma.UserUncheckedCreateWithoutPostsInput
-  >;
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput;
-  upsert?: Prisma.UserUpsertWithoutPostsInput;
-  disconnect?: Prisma.UserWhereInput | boolean;
-  delete?: Prisma.UserWhereInput | boolean;
-  connect?: Prisma.UserWhereUniqueInput;
-  update?: Prisma.XOR<
-    Prisma.XOR<
-      Prisma.UserUpdateToOneWithWhereWithoutPostsInput,
-      Prisma.UserUpdateWithoutPostsInput
-    >,
-    Prisma.UserUncheckedUpdateWithoutPostsInput
-  >;
-};
-
-export type UserCreateWithoutPostsInput = {
-  email: string;
-  name?: string | null;
-};
-
-export type UserUncheckedCreateWithoutPostsInput = {
-  id?: number;
-  email: string;
-  name?: string | null;
-};
-
-export type UserCreateOrConnectWithoutPostsInput = {
-  where: Prisma.UserWhereUniqueInput;
-  create: Prisma.XOR<
-    Prisma.UserCreateWithoutPostsInput,
-    Prisma.UserUncheckedCreateWithoutPostsInput
-  >;
-};
-
-export type UserUpsertWithoutPostsInput = {
-  update: Prisma.XOR<
-    Prisma.UserUpdateWithoutPostsInput,
-    Prisma.UserUncheckedUpdateWithoutPostsInput
-  >;
-  create: Prisma.XOR<
-    Prisma.UserCreateWithoutPostsInput,
-    Prisma.UserUncheckedCreateWithoutPostsInput
-  >;
-  where?: Prisma.UserWhereInput;
-};
-
-export type UserUpdateToOneWithWhereWithoutPostsInput = {
-  where?: Prisma.UserWhereInput;
-  data: Prisma.XOR<
-    Prisma.UserUpdateWithoutPostsInput,
-    Prisma.UserUncheckedUpdateWithoutPostsInput
-  >;
-};
-
-export type UserUpdateWithoutPostsInput = {
-  email?: Prisma.StringFieldUpdateOperationsInput | string;
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-};
-
-export type UserUncheckedUpdateWithoutPostsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number;
-  email?: Prisma.StringFieldUpdateOperationsInput | string;
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-};
-
-/**
- * Count Type UserCountOutputType
- */
-
-export type UserCountOutputType = {
-  posts: number;
-};
-
-export type UserCountOutputTypeSelect<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  posts?: boolean | UserCountOutputTypeCountPostsArgs;
-};
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeDefaultArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the UserCountOutputType
-   */
-  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null;
-};
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountPostsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  where?: Prisma.PostWhereInput;
 };
 
 export type UserSelect<
@@ -464,8 +384,8 @@ export type UserSelect<
     id?: boolean;
     email?: boolean;
     name?: boolean;
-    posts?: boolean | Prisma.User$postsArgs<ExtArgs>;
-    _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
+    created_at?: boolean;
+    updated_at?: boolean;
   },
   ExtArgs['result']['user']
 >;
@@ -478,6 +398,8 @@ export type UserSelectCreateManyAndReturn<
     id?: boolean;
     email?: boolean;
     name?: boolean;
+    created_at?: boolean;
+    updated_at?: boolean;
   },
   ExtArgs['result']['user']
 >;
@@ -490,6 +412,8 @@ export type UserSelectUpdateManyAndReturn<
     id?: boolean;
     email?: boolean;
     name?: boolean;
+    created_at?: boolean;
+    updated_at?: boolean;
   },
   ExtArgs['result']['user']
 >;
@@ -498,44 +422,31 @@ export type UserSelectScalar = {
   id?: boolean;
   email?: boolean;
   name?: boolean;
+  created_at?: boolean;
+  updated_at?: boolean;
 };
 
 export type UserOmit<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  'id' | 'email' | 'name',
+  'id' | 'email' | 'name' | 'created_at' | 'updated_at',
   ExtArgs['result']['user']
 >;
-export type UserInclude<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  posts?: boolean | Prisma.User$postsArgs<ExtArgs>;
-  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
-};
-export type UserIncludeCreateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {};
-export type UserIncludeUpdateManyAndReturn<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {};
 
 export type $UserPayload<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'User';
-  objects: {
-    posts: Prisma.$PostPayload<ExtArgs>[];
-  };
+  objects: {};
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: number;
       email: string;
       name: string | null;
+      created_at: Date;
+      updated_at: Date;
     },
     ExtArgs['result']['user']
   >;
@@ -1086,17 +997,6 @@ export interface Prisma__UserClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
-  posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(
-    args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>,
-  ): Prisma.PrismaPromise<
-    | runtime.Types.Result.GetResult<
-        Prisma.$PostPayload<ExtArgs>,
-        T,
-        'findMany',
-        GlobalOmitOptions
-      >
-    | Null
-  >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1142,6 +1042,8 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<'User', 'Int'>;
   readonly email: Prisma.FieldRef<'User', 'String'>;
   readonly name: Prisma.FieldRef<'User', 'String'>;
+  readonly created_at: Prisma.FieldRef<'User', 'DateTime'>;
+  readonly updated_at: Prisma.FieldRef<'User', 'DateTime'>;
 }
 
 // Custom InputTypes
@@ -1160,10 +1062,6 @@ export type UserFindUniqueArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * Filter, which User to fetch.
    */
@@ -1186,10 +1084,6 @@ export type UserFindUniqueOrThrowArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
-  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1210,10 +1104,6 @@ export type UserFindFirstArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * Filter, which User to fetch.
    */
@@ -1268,10 +1158,6 @@ export type UserFindFirstOrThrowArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
-  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput;
@@ -1325,10 +1211,6 @@ export type UserFindManyArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
-  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput;
@@ -1376,10 +1258,6 @@ export type UserCreateArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * The data needed to create a User.
    */
@@ -1437,10 +1315,6 @@ export type UserUpdateArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * The data needed to update a User.
    */
@@ -1523,10 +1397,6 @@ export type UserUpsertArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
-  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1556,10 +1426,6 @@ export type UserDeleteArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
-  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1583,35 +1449,6 @@ export type UserDeleteManyArgs<
 };
 
 /**
- * User.posts
- */
-export type User$postsArgs<
-  ExtArgs extends runtime.Types.Extensions.InternalArgs =
-    runtime.Types.Extensions.DefaultArgs,
-> = {
-  /**
-   * Select specific fields to fetch from the Post
-   */
-  select?: Prisma.PostSelect<ExtArgs> | null;
-  /**
-   * Omit specific fields from the Post
-   */
-  omit?: Prisma.PostOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PostInclude<ExtArgs> | null;
-  where?: Prisma.PostWhereInput;
-  orderBy?:
-    | Prisma.PostOrderByWithRelationInput
-    | Prisma.PostOrderByWithRelationInput[];
-  cursor?: Prisma.PostWhereUniqueInput;
-  take?: number;
-  skip?: number;
-  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[];
-};
-
-/**
  * User without action
  */
 export type UserDefaultArgs<
@@ -1626,8 +1463,4 @@ export type UserDefaultArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.UserInclude<ExtArgs> | null;
 };
