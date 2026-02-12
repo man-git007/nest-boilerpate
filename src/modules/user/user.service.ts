@@ -17,8 +17,8 @@ export class UserService {
   }
 
   findAllUsers(): Promise<User[]> {
-    throw new Error('Method not implementeassd.'); // Placeholder for actual implementation
-    // return this.usersRepository.findAll();
+    // throw new Error('Method not implementeassd.'); // Placeholder for actual implementation
+    return this.usersRepository.findAll();
   }
 
   public users: any[] = [];

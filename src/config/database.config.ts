@@ -5,17 +5,8 @@ export const dbConfig = () => {
 
   return {
     url: process.env.DATABASE_URL,
-    host: process.env.DB_HOST || 'localhost',
-    port: Number.parseInt(process.env.DB_PORT || '5432', 10),
-    username: process.env.DB_USERNAME || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres',
-    database: process.env.DB_DATABASE || 'nest_boiler_plate',
-    schema: process.env.DB_SCHEMA || 'public',
-    ssl: process.env.DB_SSL === 'true' || isProduction,
-    maxConnections: Number.parseInt(process.env.DB_MAX_CONNECTIONS || '10', 10),
-    connectionTimeout: Number.parseInt(
-      process.env.DB_CONNECTION_TIMEOUT || '5000',
-      10,
-    ),
+    password: process.env.DATABASE_PASSWORD || 'postgres',
+    database: process.env.DATABASE_NAME || 'nest_boiler_plate',
+    ssl: process.env.DATABASE_SSL === 'true' || isProduction,
   };
 };

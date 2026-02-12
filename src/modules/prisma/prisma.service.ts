@@ -7,6 +7,7 @@ import { dbConfig } from '../../config/database.config';
 export class PrismaService extends PrismaClient {
   constructor() {
     const config = dbConfig();
+    console.log('Database configuration:', config); // Log the entire config for debugging
 
     const adapter = new PrismaPg({
       database: config.database,
