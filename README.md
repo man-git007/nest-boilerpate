@@ -25,10 +25,20 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Prerequisite
+- Node 22
+- Postgres 16
+
 ## Project setup
 
 ```bash
+$ git clone
+$ cd nest-boilerpate
+$ cp .env.example .env
+$ update .env
 $ yarn install
+$ npx prisma migrate dev
+$ npx prisma generate
 ```
 
 ## Compile and run the project
